@@ -4,6 +4,7 @@
 #SBATCH --mem=16g
 #SBATCH -J aibdbb
 
+#Ellie editing
 
 module load biobuilds/2017.05
 module load jdk/8.u181
