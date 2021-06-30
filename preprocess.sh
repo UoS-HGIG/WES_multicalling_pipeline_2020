@@ -40,13 +40,13 @@ cd $1
 ## -R = Readgroups -O = Gap open penalty -E =Gap extension penalty
 ############################################
 #
-#bwa mem \
-#	-K 100000000 \
-#    -M \
-#	-R '@RG\tID:'${1}'_lane1\tSM:'${1}'\tPL:ILLUMINA\tLB:Library' \
-#	$REF \
-#	${1}_1.fq.gz ${1}_2.fq.gz \
-#	> ${1}_aligned.sam
+bwa mem \
+	-K 100000000 \
+    -M \
+	-R '@RG\tID:'${1}'_lane1\tSM:'${1}'\tPL:ILLUMINA\tLB:Library' \
+	$REF \
+	${1}_1.fq.gz ${1}_2.fq.gz \
+	> ${1}_aligned.sam
 #
 ### Remove contactenated FastQ files if they were generated.
 ##rm ${1}_cat1.fq ${1}_cat2.fq
@@ -56,7 +56,7 @@ cd $1
 ## convert SAM to BAM
 #######################
 #
-samtools view -T $REF -bS -o ${1}_aligned.bam ${1}.cram
+samtools view -T $REF -bS -o ${1}_aligned.bam ${1}_aligned.sam
 
 #rm ${1}.cram
 
